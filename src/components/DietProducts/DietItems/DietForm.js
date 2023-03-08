@@ -2,7 +2,8 @@
 
 
 
-import React, {useRef} from "react"
+import React, {useRef, useContext} from "react"
+import AmountContext from "../../../store/amount-context";
 import Input from "../../UI/Input/Input"
 
 
@@ -21,12 +22,14 @@ const inputObject = {
 
 export default function DietForm(props) {
 
+    const amountCtx = useContext(AmountContext)
+
     const amountRef = useRef()
 
 
     const submitHandler = (event) => {
         event.preventDefault();
-        props.onAdd(props.product, amountRef.current.value)
+        amountCtx.onAdd(props.product, amountRef.current.value)
         console.log(amountRef.current.value)
       }
     return (
