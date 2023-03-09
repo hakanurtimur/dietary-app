@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
+import AmountContext from "../../store/AmountContext";
 import Card from "../UI/Card/Card";
 import DietItem from "./DietItems/DietItem";
+
 // import classes from './AvailableProducts.module.css'
 
 
@@ -49,6 +51,11 @@ const DUMMY_DIET_ELEMENTS = [
 ];
 
 export default function AvailableProducts() {
+
+
+  const amountCtx = useContext(AmountContext)
+
+
   return (
     <section>
       <Card>
@@ -57,6 +64,8 @@ export default function AvailableProducts() {
             {DUMMY_DIET_ELEMENTS.map((item) => (
               <DietItem key={item.id} item={item}></DietItem>
             ))}
+
+            <h1>Total Cal{amountCtx.amounts.cal}</h1>
     </ul>
           
       </Card>

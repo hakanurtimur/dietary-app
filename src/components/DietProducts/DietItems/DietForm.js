@@ -26,8 +26,8 @@ export default function DietForm(props) {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        props.onAdd(props.product, amountRef.current.value)
-        console.log(amountRef.current.value)
+        const num = +amountRef.current.value
+        props.onAdd(props.product, num )    
       }
     return (
     <form onSubmit={submitHandler}>
