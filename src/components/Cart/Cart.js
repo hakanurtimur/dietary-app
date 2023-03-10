@@ -18,14 +18,14 @@ cal: 114,}].map(item => <li key={item.id}>{item.name}</li>)}</ul>
 
 
     return (
-        <Modal>
+        <Modal onClick={props.onClick}>
         {cartItems}
         <div className={classes.total}>
             <span>Total Amount</span>
             <span>1500 CALS</span>
         </div>
         <div className={classes.actions}>
-            <button className={classes["button--alt"]}>Close</button>
+            <button className={classes["button--alt"]} onClick={props.onClick}>Close</button>
             <button className={classes.button}>Order</button>
         </div>
         </Modal>
