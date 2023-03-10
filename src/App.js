@@ -1,14 +1,20 @@
 
 import React from 'react';
 import './App.css';
-import DietProducts from './components/DietProducts/DietProducts';
+import Cart from './components/Cart/Cart';
+import Alterations from './components/Alterations/Alterations';
+
 import Header from './components/Layout/Header/Header';
 
 function App() {
   return (
     <React.Fragment>
+    <Cart></Cart>
     <Header></Header>
-    <DietProducts></DietProducts>
+    <main>
+      <Alterations></Alterations>
+    </main>
+    
 
     </React.Fragment>
   );

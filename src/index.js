@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import AmountContextProvider from './store/AmountContextProvider';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <AmountContextProvider>
+  
     <App />
-    </AmountContextProvider>
+
   </React.StrictMode>
   
 );
