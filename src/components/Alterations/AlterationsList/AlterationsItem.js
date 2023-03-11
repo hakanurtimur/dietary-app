@@ -1,8 +1,26 @@
-import React from "react";
+import React, {useContext} from "react";
+import CartContext from "../../../store/cart-context";
 import AlterationItemForm from "./AlterationItemForm";
 import classes from "./AlterationsItem.module.css"
 
 export default function AlterationsItem(props) {
+
+    const cartCtx = useContext(CartContext)
+
+
+    const addToCartHandler = (amount) => {
+
+        cartCtx.addItem({
+            id: props.id,
+            cal: props.cal,
+            cho: props.cho,
+            fat: props.fat,
+            prt: props.prt,
+            amount: amount,
+            name: props.name
+        })
+console.log(cartCtx.amount, cartCtx.totalCal)
+    }
   return (
     <li className={classes.li}>
       <div className={classes.alterations}>
@@ -16,7 +34,7 @@ export default function AlterationsItem(props) {
       <div className={classes.amount}>{props.fat} <span> grams PRT</span></div>
       <div className={classes.amount}> <div className={classes.cals}> {props.cal} <span>CALS</span></div></div>
       <div>
-        <AlterationItemForm></AlterationItemForm>
+        <AlterationItemForm onAddToCart = {addToCartHandler}></AlterationItemForm>
       </div>
       </div>
       
