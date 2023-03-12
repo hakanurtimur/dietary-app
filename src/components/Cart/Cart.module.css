@@ -25,7 +25,7 @@
     font: inherit;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #8a2b06;
+    border: 1px solid #010326;
     padding: 0.5rem 2rem;
     border-radius: 25px;
     margin-left: 1rem;
@@ -33,16 +33,17 @@
   
   .actions button:hover,
   .actions button:active {
-    background-color: #5a1a01;
-    border-color: #5a1a01;
+    background-color: #010B40;
+    border-color: #010B40;
     color: white;
   }
   
   .actions .button--alt {
-    color: #8a2b06;
+    color: #010326;
   }
   
   .actions .button {
-    background-color: #8a2b06;
+    background-color: #F25C05;
     color: white;
+    border-color: #F25C05;
   }

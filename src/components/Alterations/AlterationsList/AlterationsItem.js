@@ -9,6 +9,7 @@ export default function AlterationsItem(props) {
 
 
     const addToCartHandler = (amount) => {
+        
 
         cartCtx.addItem({
             id: props.id,
@@ -19,8 +20,8 @@ export default function AlterationsItem(props) {
             amount: amount,
             name: props.name
         })
-console.log(cartCtx.amount, cartCtx.totalCal)
     }
+    
   return (
     <li className={classes.li}>
       <div className={classes.alterations}>

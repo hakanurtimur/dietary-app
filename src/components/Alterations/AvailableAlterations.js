@@ -68,6 +68,7 @@ export default function AvailableAlterations() {
   const alterationsList = DUMMY_DIET_ELEMENTS.map((element) => (
     <AlterationsItem
       key={element.id}
+      id={element.id}
       name={element.name}
       cho={element.cho}
       fat={element.fat}
