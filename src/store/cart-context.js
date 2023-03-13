@@ -6,9 +6,9 @@ const CartContext = React.createContext(
         totalCal: 0,
         addItem: (item) => {},
         removeItem: (amount) => {},
-        cho: 0,
-        prt: 0,
-        fat: 0,
+        totalCho: 0,
+        totalPrt: 0,
+        totalFat: 0,
         amount: 0,
         
     }

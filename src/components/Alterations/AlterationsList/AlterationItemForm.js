@@ -33,7 +33,7 @@ export default function AlterationItemForm(props) {
 
         <Input ref={amountRef} label="Amount" input={{
             min: "1",
-            max: "5",
+            max: "10",
             defaultValue: "1",
             step: "1",
             id: "amount",

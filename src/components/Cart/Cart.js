@@ -7,14 +7,13 @@ import CartItem from "./CartItem";
 export default function Cart(props) {
   const cartCtx = useContext(CartContext);
 
+  const cartItemRemoveHandler = (item) => {
 
-  const cartItemRemoveHandler = (id) => {
-
+    cartCtx.removeItem(item)
   };
 
   const cartItemAddHandler = (item) => {
-    cartCtx.addItem({...item, amount: 1})
-
+    cartCtx.addItem({ ...item, amount: 1 });
   };
 
   const cartItems = (
@@ -32,14 +31,26 @@ export default function Cart(props) {
     </ul>
   );
 
-
-
   return (
     <Modal onClick={props.onClick}>
       {cartItems}
       <div className={classes.total}>
-        <span>Total CALS</span>
-        <span>{cartCtx.totalCal}</span>
+        <div>
+          <span>Total CALS</span>
+          <span>{cartCtx.totalCal}</span>
+        </div>
+        <div>
+          <span>Total CHO(grams)</span>
+          <span>{cartCtx.totalCho}</span>
+        </div>
+        <div>
+          <span>Total PRT(grams)</span>
+          <span>{cartCtx.totalFat}</span>
+        </div>
+        <div>
+          <span>Total FAT(grams)</span>
+          <span>{cartCtx.totalPrt}</span>
+        </div>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onClick}>

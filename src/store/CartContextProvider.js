@@ -7,11 +7,15 @@ const cartReducer = (state, action) => {
     
 
     
-    const newTotalCal = state.totalCal + action.item.cal * action.item.amount;
 
-    const existingCartItemIndex = state.items.findIndex(item => {
-        return item.id === action.item.id;
-    })
+    
+    const newTotalCal = state.totalCal + action.item.cal * action.item.amount;
+    const newTotalCho = state.totalCho + action.item.cho * action.item.amount;
+    const newTotalPrt = state.totalPrt + action.item.prt * action.item.amount;
+    const newTotalFat = state.totalFat + action.item.fat * action.item.amount;
+    
+
+    const existingCartItemIndex = state.items.findIndex(item => item.id === action.item.id)
     
     
     const existingCartItem = state.items[existingCartItemIndex]
@@ -27,6 +31,7 @@ const cartReducer = (state, action) => {
             ...existingCartItem,
             amount: existingCartItem.amount + action.item.amount
         }
+        updatedItems = [...state.items]
         updatedItems[existingCartItemIndex] = updatedItem
         
     }
@@ -37,51 +42,51 @@ const cartReducer = (state, action) => {
     return {
       items: updatedItems,
       totalCal: newTotalCal,
-      cho: 0,
-      fat: 0,
-      prt: 0,
-      amount: 0,
-    
+      totalCho: newTotalCho,
+      totalFat: newTotalFat,
+      totalPrt: newTotalPrt,
+      amount: 0
     };
   }
+  if(action.type === 'REMOVE') {
 
-  if(action.type==='REMOVE') {
-    const newTotalCal = state.totalCal - action.cal;
 
-    const existingCartItemIndex = state.items.findIndex(item => {
-        return item.id === action.item.id;
-    })
     
-    
+    const existingCartItemIndex = state.items.findIndex(e => e.id === action.id)
+
     const existingCartItem = state.items[existingCartItemIndex]
-    
-    
-   
+
+
+    const newTotalCal = state.totalCal - existingCartItem.cal;
+    const newTotalCho = state.totalCho - existingCartItem.cho;
+    const newTotalPrt = state.totalPrt - existingCartItem.prt;
+    const newTotalFat = state.totalFat - existingCartItem.fat;
+
+    console.log(existingCartItem)
+
+
     let updatedItems = [];
-
-    if(existingCartItem) {
-
-        const updatedItem = {
-
-            ...existingCartItem,
-            amount: existingCartItem.amount - action.item.amount
-        }
-        updatedItems[existingCartItemIndex] = updatedItem
-        
-    }
-    else {
-        updatedItems = state.items.concat(action.item);
-
-    }
-    return {
-      items: updatedItems,
-      totalCal: newTotalCal,
-      cho: 0,
-      fat: 0,
-      prt: 0,
-      amount: 0,
+    let updatedItem;
+   
     
-    };
+      if(existingCartItem.amount > 1) {
+        updatedItem = {...existingCartItem, amount: existingCartItem.amount - 1}
+        updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
+        
+        
+      }else {
+        updatedItems = [...state.items.slice(0, existingCartItemIndex), ...state.items.slice(existingCartItemIndex + 1)];
+      }
+      return {
+        items: updatedItems,
+        totalCal: newTotalCal,
+        totalCho: newTotalCho,
+        totalFat: newTotalFat,
+        totalPrt: newTotalPrt,
+        amount: 0
+      };
+    
 
   }
 
@@ -91,9 +96,9 @@ const cartReducer = (state, action) => {
 const cartDefault = {
   items: [],
   totalCal: 0,
-  cho: 0,
-  fat: 0,
-  prt: 0,
+  totalCho: 0,
+  totalFat: 0,
+  totalPrt: 0,
   amount: 0,
   
 };
@@ -114,9 +119,9 @@ export default function CartContextProvider(props) {
     totalCal: cartState.totalCal,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
-    cho: cartState.cho,
-    fat: cartState.fat,
-    prt: cartState.prt,
+    totalCho: cartState.totalCho,
+    totalFat: cartState.totalFat,
+    totalPrt: cartState.totalPrt,
     amount: cartState.amount,
   };
 
