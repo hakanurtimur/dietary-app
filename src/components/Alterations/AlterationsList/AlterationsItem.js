@@ -1,15 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartContext from "../../../store/cart-context";
 import AlterationItemForm from "./AlterationItemForm";
 import classes from "./AlterationsItem.module.css";
 
 export default function AlterationsItem(props) {
-
-  
+  const [isChanged, setIsChanged] = useState(false);
 
   const cartCtx = useContext(CartContext);
 
-  
+  const alterations = props.item.alterationValue;
+
+  useEffect(() => {
+    if (alterations < props.item.alterationValue) {
+      return;
+    }
+    setIsChanged(true);
+
+    const timer = setTimeout(() => {
+      setIsChanged(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [alterations, props.item.alterationValue]);
+
+  const valueClasses = `${classes.value} ${isChanged && classes.change}`;
 
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
@@ -23,7 +39,6 @@ export default function AlterationsItem(props) {
     });
   };
 
-
   return (
     <li className={classes.li}>
       <div className={classes.alterations}>
@@ -32,22 +47,32 @@ export default function AlterationsItem(props) {
       </div>
       <div className={classes.amounts}>
         <div className={classes.amount}>
-          {props.item.alterationValue} <span> Alteration(s)</span>
+          <span className={valueClasses}> {props.item.alterationValue} </span>
+          <span className={classes.cont}> Alteration(s)</span>
         </div>
         <div className={classes.amount}>
-          {props.item.alterationValue * props.cho} <span> grams CHO</span>
+          <span className={valueClasses}>
+            {props.item.alterationValue * props.cho}{" "}
+          </span>
+          <span className={classes.cont}> grams CHO</span>
         </div>
         <div className={classes.amount}>
-          {props.item.alterationValue * props.prt} <span> grams PRT</span>
+          <span className={valueClasses}>
+            {props.item.alterationValue * props.prt}
+          </span>{" "}
+          <span className={classes.cont}> grams PRT</span>
         </div>
         <div className={classes.amount}>
-          {props.item.alterationValue * props.fat} <span> grams FAT</span>
+          <span className={valueClasses}>
+            {props.item.alterationValue * props.fat}{" "}
+          </span>
+          <span className={classes.cont}> grams FAT</span>
         </div>
         <div className={classes.amount}>
           {" "}
           <div className={classes.cals}>
-            {" "}
-            {props.item.alterationValue * props.cal} <span>CALS</span>
+            <span className={`${isChanged && classes.change}`}>{props.item.alterationValue * props.cal} </span>
+            <span>CALS</span>
           </div>
         </div>
         <div>
