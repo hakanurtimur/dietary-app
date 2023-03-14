@@ -9,8 +9,12 @@ const CartContext = React.createContext(
         totalCho: 0,
         totalPrt: 0,
         totalFat: 0,
-        amount: 0,
-        
+        dairyProduct: 0,
+        meatProduct: 0,
+        breadProduct: 0,
+        vegetableProduct: 0,
+        fruitProduct: 0,
+        fatProduct: 0
     }
 )
 
