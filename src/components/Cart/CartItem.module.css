@@ -15,7 +15,7 @@
 }
 
 .summary {
-  width: 10rem;
+  width: 25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,7 +24,15 @@
 .price {
   font-weight: bold;
   color: #010326;
+  display: flex;
+  flex-direction: column;
 }
+.inf {
+  font-size: 0.75rem;
+  color: #F25C05;
+  padding-top: 0.2rem;
+}
+
 
 .amount {
   font-weight: bold;

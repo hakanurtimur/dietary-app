@@ -1,14 +1,17 @@
 import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
-  const cal = `${props.cal} CAL`;
+  
 
   return (
     <li className={classes['cart-item']}>
       <div>
         <h2>{props.name}</h2>
         <div className={classes.summary}>
-          <span className={classes.price}>{cal}</span>
+          <span className={classes.price}>{props.cal}<span className={classes.inf}> CAL</span></span>
+          <span className={classes.price}>{props.cho} <span className={classes.inf}>Gram CHO</span> </span>
+          <span className={classes.price}>{props.prt} <span className={classes.inf}>Gram PRT</span> </span>
+          <span className={classes.price}>{props.fat} <span className={classes.inf}>Gram FAT</span> </span>
           <span className={classes.amount}>x {props.amount}</span>
         </div>
       </div>

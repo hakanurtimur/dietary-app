@@ -1,17 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../../store/cart-context";
 import CartIcon from "../../Cart/CartIcon";
 import classes from "./HeaderButton.module.css";
 
 export default function HeaderButton(props) {
 
+
+    const [isButtonBumped, setIsButtonBumped] = useState(false)
     const cartCtx = useContext(CartContext);
-    const calToNum = +cartCtx.totalCal
+
+    let calToNum = 0;
+
+    useEffect( () => {
+        if(calToNum < +cartCtx.totalCal) {
+            return;
+        } 
+        setIsButtonBumped(true)
+
+        const timer = setTimeout(() => {
+            setIsButtonBumped(false)
+        }, 300)
+        
+        return () => {clearTimeout(timer)}
+
+
+
+    }, [calToNum, cartCtx])
+
+    calToNum = +cartCtx.totalCal
+
+    const btnClasses = `${classes.button} ${isButtonBumped && classes.bump}`
     
 
 
   return (
-    <button className={classes.button} onClick={props.onClick}>
+    <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
         <CartIcon></CartIcon>
       </span>
