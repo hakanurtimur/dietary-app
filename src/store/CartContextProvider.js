@@ -142,10 +142,36 @@ const cartDefault = {
   fatProduct: 0,
 };
 
+
+const clientReducer = (state, action) => {
+
+
+return defaultUser
+}
+
+const defaultUser = {
+  firstname: '',
+  lastname: '',
+  age: 0,
+  height: 0,
+  weight: 0,
+  pal: 0,
+  gender: '',
+  BMR: 0,
+  TEE: 0,
+  BMI: 0
+}
+
 export default function CartContextProvider(props) {
   const [cartState, dispatchCart] = useReducer(cartReducer, cartDefault);
-  
+  const [clientState, dispatchClient] = useReducer(clientReducer, defaultUser)
 
+  const addClient = (client) => {
+    dispatchClient({type:'ADD', client: client})
+  }
+  
+  
+  
   const addItemHandler = (item) => {
     dispatchCart({ type: "ADD", item: item });
     
@@ -168,6 +194,7 @@ export default function CartContextProvider(props) {
     vegetableProduct: cartState.vegetableProduct,
     fruitProduct: cartState.fruitProduct,
     fatProduct: cartState.fatProduct,
+    client: clientState,
   };
 
   return (

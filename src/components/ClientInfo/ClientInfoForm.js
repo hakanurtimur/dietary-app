@@ -1,37 +1,47 @@
-import React from "react";
+import React, {useContext} from "react";
+import CartContext from "../../store/cart-context";
 import classes from "./ClientInfoForm.module.css";
 
 export default function ClientInfoForm(props) {
+
+
+    const cartCtx = useContext(CartContext)
+
+
+    const onSubmitHandler = {
+        
+    }
+
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={onSubmitHandler}>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="text" required="required"/>
-        <span>Name</span>
+        <input type="text" required="required" />
+        <span>First Name</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="text" required="required"/>
-        <span>Surname</span>
+        <input type="text" required="required" />
+        <span>Last Name</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="number" required="required"/>
+        <input type="number" required="required" />
         <span>Age</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="number" required="required"/>
-        <span>Height</span>
+        <input type="number" required="required" />
+        <span>Height(cm)</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="number" required="required"/>
-        <span>Weight</span>
+        <input type="number" required="required" />
+        <span>Weight(kg)</span>
       </div>
       <div className={classes.select}>
-        <label>Physical Activity Level(PAL) </label>
-        <select name="pal" id="pal-select">
+        <select name="pal" id="pal-select" required="required">
           <option value="">--Please choose an option--</option>
           <option value="1.1">1.1</option>
           <option value="1.2">1.2</option>
@@ -45,12 +55,15 @@ export default function ClientInfoForm(props) {
           <option value="2">2</option>
           <option value="2.2">2.2</option>
         </select>
-        <label>Gender</label>
-        <select name="gender" id="gender-select">
+        <label>Physical Activity Level(PAL) </label>
+      </div>
+      <div className={classes.select}>
+        <select name="gender" id="gender-select" required="required">
           <option value="">--Please choose an option--</option>
           <option value="dog">Male</option>
           <option value="cat">Female</option>
         </select>
+        <label>Gender</label>
       </div>
     </form>
   );

@@ -14,7 +14,8 @@ const CartContext = React.createContext(
         breadProduct: 0,
         vegetableProduct: 0,
         fruitProduct: 0,
-        fatProduct: 0
+        fatProduct: 0,
+        client: {},
     }
 )
 
