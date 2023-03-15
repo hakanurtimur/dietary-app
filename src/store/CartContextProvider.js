@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+
 import CartContext from "./cart-context";
 
 const cartReducer = (state, action) => {
@@ -145,6 +146,26 @@ const cartDefault = {
 
 const clientReducer = (state, action) => {
 
+  if(action.type === 'ADD') {
+
+    const updatedClient = {...state,
+      firstname: action.client.firstname,
+      lastname: action.client.lastname,
+      age: action.client.age,
+      height: action.client.height,
+      weight: action.client.weight,
+      pal: action.client.pal,
+      gender: action.client.gender,
+      BMR: action.client.bmr,
+      TEE: action.client.tee,
+      BMI: action.client.bmi
+        }
+     
+
+    return updatedClient;
+
+  }
+
 
 return defaultUser
 }
@@ -195,6 +216,7 @@ export default function CartContextProvider(props) {
     fruitProduct: cartState.fruitProduct,
     fatProduct: cartState.fatProduct,
     client: clientState,
+    addClient: addClient
   };
 
   return (

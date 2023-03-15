@@ -1,48 +1,105 @@
-import React, {useContext} from "react";
-import CartContext from "../../store/cart-context";
+import React, {useRef} from "react";
+
 import classes from "./ClientInfoForm.module.css";
 
 export default function ClientInfoForm(props) {
+  const firstnameRef = useRef();
+  const lastnameRef = useRef();
+  const ageRef = useRef();
+  const heightRef = useRef();
+  const weightRef = useRef();
+  const palRef = useRef();
+  const genderRef = useRef();
+  
 
 
-    const cartCtx = useContext(CartContext)
 
-
-    const onSubmitHandler = {
-        
+  const submitHandler = (event) => {
+    event.preventDefault()
+    
+    console.log(ageRef.current.value)
+    const ageValue = +ageRef.current.value;
+    const heightValue = +heightRef.current.value;
+    const weightValue = +weightRef.current.value;
+    const palValue = +palRef.current.value
+  
+    let BMR = 0;
+  
+    if (genderRef.current.value === "Male") {
+      BMR = 66.5 + 13.75 * weightValue + 5.003 * heightValue - 6.75 * ageValue;
+    } else {
+      BMR = 655.1 + 9.563 * weightValue + 1.85 * heightValue - 4.676 * ageValue;
     }
+  
+    const fixedBMR = BMR.toFixed(0);
+  
+    const TEE = BMR * palValue;
+  
+    const fixedTEE = TEE.toFixed(0);
+  
+    const BMI = (weightValue / heightValue / heightValue) * 10000;
+  
+    const fixedBMI = BMI.toFixed(2);
 
+
+    console.log({
+        firstname: firstnameRef.current.value,
+      lastname: lastnameRef.current.value,
+      age: ageValue,
+      height: heightValue,
+      weight: weightValue,
+      pal: palValue,
+      gender: genderRef.current.value,
+      bmr: fixedBMR,
+      tee: fixedTEE,
+      bmi: fixedBMI,
+    })
+
+
+    props.onAddClient({
+      firstname: firstnameRef.current.value,
+      lastname: lastnameRef.current.value,
+      age: ageValue,
+      height: heightValue,
+      weight: weightValue,
+      pal: palValue,
+      gender: genderRef.current.value,
+      bmr: fixedBMR,
+      tee: fixedTEE,
+      bmi: fixedBMI,
+    });
+  };
 
   return (
-    <form className={classes.form} onSubmit={onSubmitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="text" required="required" />
+        <input ref={firstnameRef} type="text" required="required" />
         <span>First Name</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="text" required="required" />
+        <input ref={lastnameRef} type="text" required="required" />
         <span>Last Name</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="number" required="required" />
+        <input ref={ageRef} type="number" required="required" />
         <span>Age</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="number" required="required" />
+        <input ref={heightRef} type="number" required="required" />
         <span>Height(cm)</span>
       </div>
       <div className={classes.inputBox}>
         <label></label>
-        <input type="number" required="required" />
+        <input ref={weightRef} type="number" required="required" />
         <span>Weight(kg)</span>
       </div>
       <div className={classes.select}>
-        <select name="pal" id="pal-select" required="required">
-          <option value="">--Please choose an option--</option>
+        <select ref={palRef} name="pal" id="pal-select" required="required">
+          <option value="">Physical Activity Level(PAL) </option>
           <option value="1.1">1.1</option>
           <option value="1.2">1.2</option>
           <option value="1.3">1.3</option>
@@ -55,16 +112,22 @@ export default function ClientInfoForm(props) {
           <option value="2">2</option>
           <option value="2.2">2.2</option>
         </select>
-        <label>Physical Activity Level(PAL) </label>
+        
       </div>
       <div className={classes.select}>
-        <select name="gender" id="gender-select" required="required">
-          <option value="">--Please choose an option--</option>
-          <option value="dog">Male</option>
-          <option value="cat">Female</option>
+        <select
+          ref={genderRef}
+          name="gender"
+          id="gender-select"
+          required="required"
+        >
+         <option value="">Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
-        <label>Gender</label>
+        
       </div>
+      <button type="submit"> Generate </button>
     </form>
   );
 }

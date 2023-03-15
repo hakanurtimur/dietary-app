@@ -16,6 +16,7 @@ const CartContext = React.createContext(
         fruitProduct: 0,
         fatProduct: 0,
         client: {},
+        addClient: (client) => {}
     }
 )
 
