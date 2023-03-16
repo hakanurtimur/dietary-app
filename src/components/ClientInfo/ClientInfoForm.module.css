@@ -96,37 +96,18 @@
   .form button:hover,
   .form button:active {
     
-    animation: buttonHover 1s  ease-in-out;
-    
-  }
-
-  @keyframes buttonHover {
-
-    0% {
-        transform: scale(1);
-        border-left: 2px solid #F25C05;
-        border-right: 2px solid #F25C05;
-        
-    }
-
-    50% {
-        transform: scale(1.1);
-        border-top: 2px solid #F25C05;
-        border-bottom: 2px solid #F25C05;
-        
-    }
-
-    100% {
-        transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+    transform: scale(1.1);
         background-color: #F25C05;
         border: 2px solid #F25C05;
-        
-        
-    }
+    
+  }
+
+
 
 
     
-  }
+  
 
 
   

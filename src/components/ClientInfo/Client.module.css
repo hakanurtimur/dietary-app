@@ -1,0 +1,24 @@
+.clientInfo {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1rem;
+    gap: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+}
+
+.clientItem {
+    display: inline-flex;
+    gap: 1rem;
+    animation: formInput 1s ease-in-out;
+    padding-left: 4.4rem;
+}
+
+.clientItem span {
+    color: #F25C05;
+}
+
+

@@ -72,6 +72,7 @@ export default function ClientInfoForm(props) {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
+    <h1>Client Form</h1>
       <div className={classes.inputBox}>
         <label></label>
         <input ref={firstnameRef} type="text" required="required" />

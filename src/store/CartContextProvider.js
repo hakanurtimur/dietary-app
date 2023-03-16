@@ -178,9 +178,9 @@ const defaultUser = {
   weight: 0,
   pal: 0,
   gender: '',
-  BMR: 0,
-  TEE: 0,
-  BMI: 0
+  BMR: '',
+  TEE: '',
+  BMI: ''
 }
 
 export default function CartContextProvider(props) {
