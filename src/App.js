@@ -6,6 +6,7 @@ import Header from "./components/Layout/Header/Header";
 import CartContextProvider from "./store/CartContextProvider";
 import ClientInfo from "./components/ClientInfo/ClientInfo";
 import AlterationsSummary from "./components/Alterations/AlterationsSummary";
+import LoadBars from "./components/LoadBars/LoadBars";
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -26,8 +27,10 @@ function App() {
       <main>
         <ClientInfo></ClientInfo>
         <Alterations></Alterations>
+        <LoadBars></LoadBars>
       </main>
     </CartContextProvider>
+    
   );
 }
 

@@ -1,0 +1,48 @@
+.loadBars {
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  color: #010326;
+}
+.bars {
+    display: flex;
+    justify-content: space-around;
+    height: 20rem;
+
+}
+
+.chart-bar {
+ width:  5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-bar__inner {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  background-color: hwb(230 0% 75% / 0.086);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chart-bar__fill {
+  background-color: #010B40;
+  
+  transition: all 0.3s ease-out;
+}
+
+.chart-bar__label {
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  color: #F25C05;
+  margin-top: 1rem;
+}
+h1 {
+    align-self: center;
+}
