@@ -1,7 +1,5 @@
 # Dietary App
 
-![Application Screenshot](screenshot.png)
-
 **Dietary App** is a React-based application that helps users calculate their body mass index (BMI) and daily energy requirements by entering their personal information, including name, surname, height, and weight. Users can also adjust portion sizes to reach their target calorie intake and view the percentages of protein, carbohydrates, and fats.
 
 ## Link https://dietar-app.web.app/
